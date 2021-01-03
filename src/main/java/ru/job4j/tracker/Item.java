@@ -9,11 +9,12 @@ public class Item {
     }
 
     public Item(int n){
-        
+        this.id = n;
     }
     
     public Item(int n, String text){
-        
+        this.id = n;
+        this.name = text;
     }
 
     public int getId() {
