@@ -5,22 +5,11 @@ import java.time.LocalDateTime;
 public class Item {
     private int id;
     private String name;
-    private LocalDateTime created = LocalDateTime.now();
 
-    public Item(){
 
+    public Item(String nameOfItem) {
+        this.name = nameOfItem;
     }
-
-    public Item(int n){
-        this.id = n;
-    }
-    
-    public Item(int n, String text){
-        this.id = n;
-        this.name = text;
-    }
-
-
     public int getId() {
         return id;
     }
@@ -38,13 +27,8 @@ public class Item {
     }
 
     public static void main(String[] args) {
-        Item item = new Item();
-        Item item1 = new Item(2);
-        Item item2 = new Item(5, "Cat");
-        System.out.println(item2.getCreated());
+        Item item = new Item("Item1");
+        System.out.println(item.getId() + " " + item.getName());
     }
 
-       public LocalDateTime getCreated() {
-        return created;
-    }
 }
