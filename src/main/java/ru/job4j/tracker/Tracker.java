@@ -26,6 +26,18 @@ public class Tracker {
         return rsl;
     }
 
+    public Item[] findAllForDelete() {
+        Item[] noNull = new Item[items.length];
+        int count = 0;
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null) {
+                noNull[count] = items[i];
+                count++;
+            }
+        }
+        return Arrays.copyOf(noNull, count);
+    }
+
     public Item[] findAll() {
                 return Arrays.copyOf(items, size);
     }
@@ -34,7 +46,7 @@ public class Tracker {
         Item[] eqName = new Item[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
-            if ( items[i].getName().equals(key)) {
+            if (items[i].getName().equals(key)) {
                 eqName[count] = items[i];
                 count++;
             }
@@ -42,12 +54,37 @@ public class Tracker {
         return Arrays.copyOf(eqName, count);
     }
 
+    //поиска индекс элемента массива по ид заявки
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int i = 0; i < size; i++) {
+            if (items[i].getId() == id) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    public boolean replace(int id, Item item) {
+        boolean rsl = false;
+        int index = indexOf(id); // найдем индекс элемента массива по ид заявки
+        item.setId(id); // присвоим номер заявке
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
+                items[i] = item;
+                rsl = true;
+            }
+        }
+        return rsl;
+    }
+
     public static void main(String[] args) {
         Item item = new Item();
         item.setName("Item");
         Item item1 = new Item();
-         item1.setName("Item1");
-       // Item item2 = new Item();
+        // item1.setName("Item1");
+        Item item2 = new Item();
 
         Tracker tracker = new Tracker();
        /* LocalDateTime date = item.getCreated();
@@ -57,20 +94,13 @@ public class Tracker {
 
         Item rsl = tracker.add(item);
         Item rsl1 = tracker.add(item1);
-       // Item rsl2 = tracker.add(item2);
+        Item rsl2 = tracker.add(item2);
 
 
-
-        Item[] findString = tracker.findByName("Item");
-        for (int i = 0; i < findString.length; i++) {
-            System.out.println(findString[i].getName());
+        Item[] findAll = tracker.findAll();
+        for (int i = 0; i < findAll.length; i++) {
+            System.out.println(findAll[i].getName());
         }
-
-
-
     }
-
-
-
-    }
+}
 
