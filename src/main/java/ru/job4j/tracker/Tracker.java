@@ -27,36 +27,28 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[items.length];
-        int count = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                itemsWithoutNull[count] = items[i];
-                count++;
-            }
-        }
-        return Arrays.copyOf(itemsWithoutNull, count);
+                return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
-        Item[] eqName = new Item[items.length];
-        int size = 0;
-        for (int i = 0; i < items.length; i++) {
+        Item[] eqName = new Item[size];
+        int count = 0;
+        for (int i = 0; i < size; i++) {
             if ( items[i].getName().equals(key)) {
-                eqName[size] = items[i];
-                size++;
+                eqName[count] = items[i];
+                count++;
             }
         }
-        return eqName = Arrays.copyOf(eqName, size);
+        return Arrays.copyOf(eqName, count);
     }
 
     public static void main(String[] args) {
         Item item = new Item();
         item.setName("Item");
         Item item1 = new Item();
-        // item1.setName("Item1");
-        Item item2 = new Item();
-        item2.setName("Item2");
+         item1.setName("Item1");
+       // Item item2 = new Item();
+
         Tracker tracker = new Tracker();
        /* LocalDateTime date = item.getCreated();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
@@ -65,17 +57,16 @@ public class Tracker {
 
         Item rsl = tracker.add(item);
         Item rsl1 = tracker.add(item1);
-        Item rsl2 = tracker.add(item2);
+       // Item rsl2 = tracker.add(item2);
 
-        Item[] noNullArray = tracker.findAll();
-        for (int i = 0; i < noNullArray.length; i++) {
-            System.out.print(noNullArray[i].getName() + " ");
+
+
+        Item[] findString = tracker.findByName("Item");
+        for (int i = 0; i < findString.length; i++) {
+            System.out.println(findString[i].getName());
         }
-        System.out.println();
-        Item[] addArray = tracker.items;
-        for (int i = 0; i < addArray.length; i++) {
-            System.out.print(addArray[i].getName() + " ");
-        }
+
+
 
     }
 

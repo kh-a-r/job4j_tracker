@@ -6,10 +6,25 @@ public class Item {
     private int id;
     private String name;
 
+    Item() {
+    //info();
+    };
 
-    public Item(String nameOfItem) {
-        this.name = nameOfItem;
+    public Item(int number) {
+        id = number;
+       // info();
     }
+
+    public Item(int number, String name) {
+        id = number;
+        this.name = name;
+       // info();
+    }
+
+    public void info() {
+        System.out.println(getId() + ", " + getName());
+    }
+
     public int getId() {
         return id;
     }
@@ -27,8 +42,10 @@ public class Item {
     }
 
     public static void main(String[] args) {
-        Item item = new Item("Item1");
-        System.out.println(item.getId() + " " + item.getName());
+        Item item = new Item();
+        item.name = "Заявка";
+        item.id = 1;
+        item.info();
     }
 
 }
