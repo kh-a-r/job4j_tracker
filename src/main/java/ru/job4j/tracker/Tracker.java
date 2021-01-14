@@ -84,10 +84,10 @@ public class Tracker {
             int start = index + 1;
             int lenght = size - index;
             System.arraycopy(items, start, items, index, lenght);
+            items[size - 1] = null;
+            size--;
             rsl = true;
         }
-        items[size - 1] = null;
-        size--;
         return rsl;
     }
 
