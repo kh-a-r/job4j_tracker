@@ -67,10 +67,14 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
-        int index = indexOf(id); // найдем индекс элемента массива по ид заявки
-        item.setId(id); // присвоим номер заявке, номер добавляемой заявки == номеру прежней заявки
-        items[index] = item; // запишем в ячейку с найденным индексом новую заявку item с прежним id
-        return index != -1 ? true : false;
+        boolean isReplace = false;
+        int index = indexOf(id);
+        if (index != -1) {
+            item.setId(id);
+            items[index] = item;
+            isReplace = true;
+        }
+        return isReplace;
     }
 }
 
