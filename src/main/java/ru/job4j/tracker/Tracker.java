@@ -39,7 +39,7 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-                return Arrays.copyOf(items, size);
+        return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
@@ -67,40 +67,10 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
-        boolean rsl = false;
         int index = indexOf(id); // найдем индекс элемента массива по ид заявки
-        item.setId(id); // присвоим номер заявке
-        for (int i = 0; i < size; i++) {
-            if (i == index) {
-                items[i] = item;
-                rsl = true;
-            }
-        }
-        return rsl;
-    }
-
-    public static void main(String[] args) {
-        Item item = new Item();
-        item.setName("Item");
-        Item item1 = new Item();
-        // item1.setName("Item1");
-        Item item2 = new Item();
-
-        Tracker tracker = new Tracker();
-       /* LocalDateTime date = item.getCreated();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String currentDateTimeForm = date.format(formatter);
-        System.out.println(currentDateTimeForm); */
-
-        Item rsl = tracker.add(item);
-        Item rsl1 = tracker.add(item1);
-        Item rsl2 = tracker.add(item2);
-
-
-        Item[] findAll = tracker.findAll();
-        for (int i = 0; i < findAll.length; i++) {
-            System.out.println(findAll[i].getName());
-        }
+        item.setId(id); // присвоим номер заявке, номер добавляемой заявки == номеру прежней заявки
+        items[index] = item; // запишем в ячейку с найденным индексом новую заявку item с прежним id
+        return index != -1 ? true : false;
     }
 }
 

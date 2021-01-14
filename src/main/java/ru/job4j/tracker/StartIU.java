@@ -27,14 +27,8 @@ public class StartIU {
         System.out.println(("Название и номер заявки " + rsl2.getName() + " #" + rsl2.getId()));
         Item findItem = tracker.findById(2); // поиск по номеру заявки
         System.out.println("Найдена заявка " + findItem.getName() + "," +  " #" + findItem.getId());
-        Item[] arrNoNull = tracker.findAll();
-        for (int i = 0; i < arrNoNull.length; i++) {
-            System.out.print(arrNoNull[i].getName() + " ");
-        }
-
-        System.out.print("Длина массива без пустых элеметов " + arrNoNull.length);
-        System.out.println();
-
-
+        Item itemForReplace = new Item();
+        itemForReplace.setName("Change");
+        System.out.println(tracker.replace(2,itemForReplace));
     }
 }
