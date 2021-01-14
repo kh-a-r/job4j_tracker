@@ -30,5 +30,7 @@ public class StartIU {
         Item itemForReplace = new Item();
         itemForReplace.setName("Change");
         System.out.println(tracker.replace(2,itemForReplace));
+
+        System.out.println(item);
     }
 }
