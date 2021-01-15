@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.time.LocalDateTime;
+import java.util.StringJoiner;
 
 public class Item {
     private int id;
@@ -34,18 +35,19 @@ public class Item {
         this.name = name;
     }
 
-    public static void main(String[] args) {
-        Item item = new Item();
-        item.name = "Заявка";
-        item.id = 1;
-
-    }
-
-    @Override
+   /* @Override
     public String toString() {
         return "Item{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ")
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .toString();
     }
 }

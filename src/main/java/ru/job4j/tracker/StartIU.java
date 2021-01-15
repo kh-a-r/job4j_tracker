@@ -31,6 +31,16 @@ public class StartIU {
         itemForReplace.setName("Change");
         System.out.println(tracker.replace(2,itemForReplace));
 
-        System.out.println(item);
+        //System.out.println(item);
+
+        Item[] noNullarr = tracker.findAllForDelete();
+        for (int i = 0; i < noNullarr.length; i++) {
+            System.out.println(noNullarr[i] + " ");
+        }
+
+        Item[] findAllEl = tracker.findAll();
+        for (int i = 0; i < findAllEl.length; i++) {
+            System.out.println(findAllEl[i] +" ");
+        }
     }
 }
