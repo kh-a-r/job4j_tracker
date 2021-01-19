@@ -26,7 +26,7 @@ public class Tracker {
         return rsl;
     }
 
-    public Item[] findAllForDelete() {
+    /*public Item[] findAllForDelete() {
         Item[] noNull = new Item[items.length];
         int count = 0;
         for (int i = 0; i < items.length; i++) {
@@ -36,7 +36,7 @@ public class Tracker {
             }
         }
         return Arrays.copyOf(noNull, count);
-    }
+    }*/
 
     public Item[] findAll() {
         return Arrays.copyOf(items, size);
