@@ -25,4 +25,7 @@ public class Bus implements Transport{
         double price = scanner.nextDouble();
         return liter * price;
     }
+
+    public static void main(String[] args) {
+    }
 }

@@ -1,0 +1,40 @@
+package ru.job4j.tracker;
+
+public class User {
+    private int id;
+
+    private String username;
+
+    private String password;
+
+    private String role;
+
+
+    public User(int userid, String username, String password) {
+        id = userid;
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
+}
