@@ -20,9 +20,9 @@ public class StartIU {
     }
 
     public static void editItem(Input input, Tracker tracker) {
-        System.out.println("=== Edit Item ===");
-        int id = input.askInt("Enter Item's id");
-        String name = input.askStr("Enter new Item's name");
+        System.out.println("=== Update Item ===");
+        int id = input.askInt("Enter id");
+        String name = input.askStr("Enter a new name of Item: ");
         Item item = new Item(name);
         boolean rsl = tracker.replace(id, item);
         if (rsl) {
