@@ -32,7 +32,7 @@ public class StartIUTest {
     }
 
     @Test
-    public void deleteItem() {
+    public void whenDeleteItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("new Item");
         tracker.add(item);
