@@ -9,37 +9,49 @@ import static org.hamcrest.Matchers.nullValue;
 
 public class StartUITest {
 
-        @Test
-    public void whenAddItem() {
-            String[] answers = {"Fix PC"};
-            Input input = new StubInput(answers);
-            Tracker tracker = new Tracker();
-            StartUI.createItem(input, tracker);
-            Item created = tracker.findAll()[0];
-            Item expected = new Item("Fix PC");
-            assertThat(created.getName(), is(expected.getName()));
-        }
-
     @Test
-    public void whenEditItem() {
-            Tracker tracker = new Tracker();
-            Item item = new Item("new Item");
-            tracker.add(item);
-            String[] answers = {String.valueOf(item.getId()), "replace Item"};
-            StartUI.editItem(new StubInput(answers), tracker);
-            Item replaced = tracker.findById(item.getId());
-            assertThat(replaced.getName(), is("replace Item"));
+    public void whenCreateItem() {
+        String[] answers = {"0", "Item name", "1"};
+        Input input = new StubInput(answers);
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(),
+                new Exit()
+        };
+        new StartUI().init(input, tracker, actions);
+        Item created = tracker.findAll()[0];
+        Item expected = new Item("Item name");
+        assertThat(created.getName(), is(expected.getName()));
     }
 
     @Test
+    public void whenReplaceItem() {
+        String[] answers = {"0", "Item name", "1", "1", "New Item", "2"};
+        Input input = new StubInput(answers);
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(),
+                new ReplaceItem(),
+                new Exit()
+        };
+        new StartUI().init(input, tracker, actions);
+        Item created = tracker.findAll()[0];
+        Item expected = new Item("New Item");
+        assertThat(created.getName(), is(expected.getName()));
+    }
+
+   @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item("new Item");
-        tracker.add(item);
-        String[] answers = {String.valueOf(item.getId())};
-        StartUI.deleteItem(new StubInput(answers), tracker);
-        Item replaced = tracker.findById(item.getId());
-        assertThat(replaced, is(nullValue()));
+        Item item = tracker.add(new Item("Deleted Item"));
+        String[] answers = {"0","1", "1"};
+       Input input = new StubInput(answers);
+       UserAction[] actions = {
+               new DeleteItem(),
+               new Exit()
+       };
+       new StartUI().init(input, tracker, actions);
+       assertThat(tracker.findById(item.getId()), is(nullValue()));
 
     }
 }
