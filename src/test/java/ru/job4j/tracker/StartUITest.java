@@ -10,6 +10,24 @@ import static org.hamcrest.Matchers.nullValue;
 public class StartUITest {
 
     @Test
+    public void whenExit() {
+        Output output = new StubOutput();
+        String[] answers = {"0"};
+        Input input = new StubInput(answers);
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new Exit()
+        };
+        new StartUI(output).init(input, tracker, actions);
+        String exp = output.toString();
+        String is = "Menu:" + System.lineSeparator() +
+                "0. Exit";
+        assertThat(exp, is(is));
+      }
+    }
+
+
+   /* @Test
     public void whenCreateItem() {
         String[] answers = {"0", "Item name", "1"};
         Input input = new StubInput(answers);
@@ -55,5 +73,5 @@ public class StartUITest {
 
     }
 }
-
+*/
 
