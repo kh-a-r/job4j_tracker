@@ -12,37 +12,39 @@ public class StartUITest {
     @Test
     public void whenExit() {
         Output output = new StubOutput();
-        String[] answers = {"0"};
-        Input input = new StubInput(answers);
+        // String[] answers = {"0"};
+        Input input = new StubInput(new String[]{"0"});
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new Exit()
+                new Exit(output)
         };
         new StartUI(output).init(input, tracker, actions);
         String exp = output.toString();
         String is = "Menu:" + System.lineSeparator() +
-                "0. Exit";
+                "0. Exit" + System.lineSeparator() +
+                "=== See you! ===" + System.lineSeparator();
         assertThat(exp, is(is));
-      }
     }
 
 
-   /* @Test
+    @Test
     public void whenCreateItem() {
+        Output output = new StubOutput();
         String[] answers = {"0", "Item name", "1"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
-                new Exit()
+                new CreateAction(output),
+                new Exit(output)
         };
-        new StartUI().init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         Item created = tracker.findAll()[0];
         Item expected = new Item("Item name");
         assertThat(created.getName(), is(expected.getName()));
     }
+}
 
-    @Test
+  /*  @Test
     public void whenReplaceItem() {
         String[] answers = {"0", "Item name", "1", "1", "New Item", "2"};
         Input input = new StubInput(answers);

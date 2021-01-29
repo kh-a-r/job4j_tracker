@@ -4,8 +4,8 @@ public class CreateAction implements UserAction {
 
     private final Output output;
 
-    public CreateAction(Output out) {
-        output = out;
+    public CreateAction(Output output) {
+        this.output = output;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class CreateAction implements UserAction {
         output.println("=== Create a new Item ===");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
-        System.out.println(tracker.add(item));
+        output.println(tracker.add(item));
         return true;
     }
 }
