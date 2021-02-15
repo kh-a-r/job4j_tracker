@@ -274,6 +274,28 @@ public class StartUITest {
                 "=== See you! ===" + System.lineSeparator();
         assertThat(output.toString(), is(is));
     }
+
+    @Test
+    public void whenInvalidExit() {
+    Output output = new StubOutput();
+    Input in = new StubInput(
+            new String[] {"1", "0"}
+    );
+    Tracker tracker = new Tracker();
+    UserAction[] actions = {
+            new Exit(output)
+    };
+    new StartUI(output).init(in, tracker, actions);
+    assertThat(output.toString(), is(
+            String.format(
+            "Menu:%n"
+            + "0. Exit%n"
+            + "Wrong input, you can select: 0 .. 0%n"
+            + "Menu:%n"
+            + "0. Exit%n"
+            + "=== See you! ===%n"
+            )));
+}
 }
 
 
