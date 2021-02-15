@@ -4,7 +4,8 @@ public class StubInput implements Input  {
     private String[] answers;
     private int position = 0;
 
-    public StubInput(String[] answers){
+    public StubInput(String[] answers){// конструктор
+
         this.answers = answers;
     }
 
@@ -15,6 +16,7 @@ public class StubInput implements Input  {
 
     @Override
     public int askInt(String question) {
+
         return Integer.parseInt(askStr(question));
     }
 }
