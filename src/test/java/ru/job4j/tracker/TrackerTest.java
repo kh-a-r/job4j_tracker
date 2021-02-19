@@ -9,7 +9,7 @@ public class TrackerTest {
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item item = new Item("test1");
        // item.setName("test1");
         tracker.add(item);
@@ -19,7 +19,7 @@ public class TrackerTest {
 
     @Test
     public void testReplace() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item bug = new Item("Bug");
        // bug.setName("Bug");
         tracker.add(bug);
@@ -33,7 +33,7 @@ public class TrackerTest {
 
     @Test
     public void testDelete() {
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Item bug = new Item("Bug");
        // bug.setName("Bug");
         tracker.add(bug);

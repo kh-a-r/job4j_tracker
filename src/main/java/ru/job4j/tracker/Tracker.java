@@ -3,11 +3,23 @@ package ru.job4j.tracker;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Tracker {
+public final class Tracker {
+    private static Tracker instance = null;
+
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
 
+    private Tracker(){
+
+    }
+
+public static Tracker getInstance() {
+        if (instance == null) {
+            instance = new Tracker();
+        }
+        return instance;
+}
     public Item add(Item item) {
         item.setId(ids++);
         items[size++] = item;
@@ -26,18 +38,6 @@ public class Tracker {
         return rsl;
     }
 
-    /*public Item[] findAllForDelete() {
-        Item[] noNull = new Item[items.length];
-        int count = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                noNull[count] = items[i];
-                count++;
-            }
-        }
-        return Arrays.copyOf(noNull, count);
-    }*/
-
     public Item[] findAll() {
         return Arrays.copyOf(items, size);
     }
@@ -54,7 +54,6 @@ public class Tracker {
         return Arrays.copyOf(eqName, count);
     }
 
-    //поиска индекс элемента массива по ид заявки
     private int indexOf(int id) {
         int rsl = -1;
         for (int i = 0; i < size; i++) {

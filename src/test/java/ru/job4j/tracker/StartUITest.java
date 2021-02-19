@@ -13,7 +13,7 @@ public class StartUITest {
     public void whenExit() {
         Output output = new StubOutput();
         Input input = new StubInput(new String[]{"0"});
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new Exit(output)
         };
@@ -31,7 +31,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = {"0", "q1", "1"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new CreateAction(output),
                 new Exit(output)
@@ -55,7 +55,7 @@ public class StartUITest {
     Output output = new StubOutput();
         String[] answers = {"0", "q1", "1", "1", "New Item", "2"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new CreateAction(output),
                 new ReplaceItem(output),
@@ -86,7 +86,7 @@ public class StartUITest {
    @Test
     public void whenDeleteItem() {
         Output output = new StubOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         String[] answers = {"0","1", "1"};
        Input input = new StubInput(answers);
        UserAction[] actions = {
@@ -111,7 +111,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = new String[]{"0", "1", "1"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new FindById(output),
                 new Exit(output)
@@ -134,7 +134,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = new String[]{"0", "q1", "1", "1", "2"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new CreateAction(output),
                 new FindById(output),
@@ -166,7 +166,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = new String[]{"0", "Item", "1"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new FindByName(output),
                 new Exit(output)
@@ -189,7 +189,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = new String[]{"0", "q1", "1", "q1", "2"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new CreateAction(output),
                 new FindByName(output),
@@ -221,7 +221,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = new String[]{"0", "", "1", "", "2"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         UserAction[] actions = {
                 new CreateAction(output),
                 new FindByName(output),
@@ -253,7 +253,7 @@ public class StartUITest {
         Output output = new StubOutput();
         String[] answers = new String[]{"0", "1"};
         Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         tracker.add(new Item("Item"));
         UserAction[] actions = {
                 new ShowItems(output),
@@ -281,7 +281,7 @@ public class StartUITest {
     Input in = new StubInput(
             new String[] {"1", "0"}
     );
-    Tracker tracker = new Tracker();
+    Tracker tracker = Tracker.getInstance();
     UserAction[] actions = {
             new Exit(output)
     };
