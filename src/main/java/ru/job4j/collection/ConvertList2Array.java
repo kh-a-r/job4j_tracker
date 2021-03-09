@@ -11,7 +11,7 @@ public class ConvertList2Array {
         for (Integer num : list) {
             array[row][cell] = num;
             cell++;
-            if(cell == cells){
+            if (cell == cells) {
                 row++;
                 cell = 0;
             }
